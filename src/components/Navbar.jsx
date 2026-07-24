@@ -5,8 +5,6 @@ import {
   ShoppingCart,
   User,
   Package,
-  ChevronDown,
-  // Flame,
   Menu,
   X,
 } from "lucide-react";
@@ -22,40 +20,15 @@ const Navbar = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const [search, setSearch] = useState("");
-  const [selectedCat, setSelectedCat] = useState("All Categories");
-  const [selectedCatSlug, setSelectedCatSlug] = useState("");
-  const [catDropdown, setCatDropdown] = useState(false);
   const [mobileMenu, setMobileMenu] = useState(false);
 
   const handleSearch = (e) => {
     e.preventDefault();
     if (search.trim()) {
-      const params = new URLSearchParams();
-      params.set("search", search.trim());
-      if (selectedCatSlug) params.set("category", selectedCatSlug);
-      navigate(`/shop?${params.toString()}`);
+      navigate(`/shop?search=${encodeURIComponent(search.trim())}`);
       setSearch("");
     }
   };
-
-  const selectCategory = (name, slug) => {
-    setSelectedCat(name);
-    setSelectedCatSlug(slug);
-    setCatDropdown(false);
-  };
-
-  const categories = [
-    { name: t("nav.allCategories"), slug: "" },
-    { name: t("nav.home"), slug: "/" },
-    { name: t("nav.men"), slug: "men" },
-    { name: t("nav.women"), slug: "women" },
-    { name: t("nav.kids"), slug: "kids" },
-    { name: t("nav.shoes"), slug: "shoes" },
-    { name: t("nav.watches"), slug: "watches" },
-    { name: t("nav.beauty"), slug: "beauty" },
-    { name: t("nav.accessories"), slug: "accessories" },
-    { name: t("nav.newArrivals"), slug: "new-arrivals" },
-  ];
 
   return (
     <>
@@ -82,40 +55,6 @@ const Navbar = () => {
 
               <form onSubmit={handleSearch} className="hidden md:flex flex-1">
                 <div className="flex w-full border border-gray-300 rounded-[4px] overflow-hidden focus-within:border-[#1F3A63] focus-within:ring-1 focus-within:ring-[#1F3A63] transition-all">
-                  <div className="relative">
-                    <button
-                      type="button"
-                      onClick={() => setCatDropdown(!catDropdown)}
-                      className="flex items-center gap-1 h-full px-3 text-xs text-gray-600 bg-gray-50 hover:bg-gray-100 border-r border-gray-300 whitespace-nowrap min-w-[110px]"
-                    >
-                      {selectedCat}
-                      <ChevronDown className="w-3 h-3" />
-                    </button>
-                    {catDropdown && (
-                      <>
-                        <div
-                          className="fixed inset-0 z-10"
-                          onClick={() => setCatDropdown(false)}
-                        />
-                        <div className="absolute top-full left-0 mt-1 bg-white border border-gray-200 rounded-[4px] shadow-lg z-20 w-44 py-1">
-                          {categories.map((cat) => (
-                            <button
-                              key={cat.slug}
-                              type="button"
-                              onClick={() => selectCategory(cat.name, cat.slug)}
-                              className={`w-full text-left px-3 py-2 text-sm hover:bg-gray-50 ${
-                                selectedCat === cat.name
-                                  ? "text-[#1F3A63] font-medium"
-                                  : "text-gray-700"
-                              }`}
-                            >
-                              {cat.name}
-                            </button>
-                          ))}
-                        </div>
-                      </>
-                    )}
-                  </div>
                   <input
                     type="text"
                     value={search}
@@ -292,13 +231,6 @@ const Navbar = () => {
                 {t("nav.newArrivals")}
               </Link>
             </div>
-            {/* <Link
-              to="/shop?category=deals"
-              className="flex items-center bg-red-500 p-1 rounded text-white"
-            >
-              <Flame className="w-4 h-4" />
-              {t("nav.deals")}
-            </Link> */}
           </div>
         </div>
 

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ChevronRight, HelpCircle, ShoppingCart, CreditCard, Truck, RefreshCw, User } from "lucide-react";
+import { ChevronRight, ShoppingCart, CreditCard, Truck, RefreshCw, User } from "lucide-react";
 
 const FAQs = () => {
   const categories = [

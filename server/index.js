@@ -1,4 +1,3 @@
-import "dotenv/config";
 import express from "express";
 import cors from "cors";
 import connectDB from "./config/db.js";
@@ -9,7 +8,6 @@ import cartRoutes from "./routes/cart.js";
 import reviewRoutes from "./routes/reviews.js";
 
 const app = express();
-const PORT = process.env.PORT || 5000;
 
 app.use(
   cors({
@@ -29,20 +27,28 @@ app.get("/api/health", (_req, res) => {
   res.json({ status: "ok", timestamp: new Date().toISOString() });
 });
 
-const start = async () => {
+let dbConnected = false;
+
+const ensureDB = async () => {
+  if (dbConnected) return;
   try {
     await connectDB();
+    dbConnected = true;
     console.log("MongoDB connected successfully");
   } catch (err) {
     console.warn("MongoDB connection failed:", err.message);
-    console.warn(
-      "Server will start without database. Some routes will not work.",
-    );
   }
-
-  app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-  });
 };
 
-start();
+// For local development
+if (process.env.NODE_ENV !== "production") {
+  ensureDB().then(() => {
+    const PORT = process.env.PORT || 5000;
+    app.listen(PORT, () => {
+      console.log(`Server running on port ${PORT}`);
+    });
+  });
+}
+
+export { ensureDB };
+export default app;

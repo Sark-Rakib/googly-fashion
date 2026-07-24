@@ -63,47 +63,6 @@ export const features = [
   { icon: BadgeCheck, title: "Best Price", subtitle: "Affordable Price" },
 ];
 
-export const brands = [
-  "Nike",
-  "Adidas",
-  "Zara",
-  "H&M",
-  "Gucci",
-  "Prada",
-  "Levi's",
-  "Puma",
-  "Reebok",
-  "Vans",
-];
-
-export const customerReviews = [
-  {
-    name: "Sarah J.",
-    rating: 5,
-    text: "Amazing quality! The dress I ordered exceeded my expectations. Fast delivery too!",
-  },
-  {
-    name: "Michael R.",
-    rating: 4,
-    text: "Great collection and reasonable prices. The fits are true to size.",
-  },
-  {
-    name: "Emily T.",
-    rating: 5,
-    text: "My go-to fashion store now. Everything I've ordered has been perfect!",
-  },
-  {
-    name: "David K.",
-    rating: 4,
-    text: "Excellent customer service. They helped me with a size exchange very quickly.",
-  },
-  {
-    name: "Lisa M.",
-    rating: 5,
-    text: "Love the new arrivals! The quality keeps getting better and better.",
-  },
-];
-
 export const sortOptions = [
   { label: "Newest", value: "newest" },
   { label: "Price: Low to High", value: "price-asc" },

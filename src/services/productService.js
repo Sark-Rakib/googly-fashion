@@ -38,25 +38,6 @@ export const getProductBySlug = async (slug) => {
   return normalize(data);
 };
 
-export const getProductsByCategory = async (category) => {
-  if (!category) return getProducts();
-  const { data } = await axios.get(API, { params: { category } });
-  const items = data.products || data;
-  return Array.isArray(items) ? items.map(normalize) : [];
-};
-
-export const searchProducts = async (query) => {
-  if (!query) return getProducts();
-  const { data } = await axios.get(API, { params: { search: query } });
-  const items = data.products || data;
-  return Array.isArray(items) ? items.map(normalize) : [];
-};
-
-export const getFeaturedProducts = async () => {
-  const { data } = await axios.get(`${API}/featured`);
-  return Array.isArray(data) ? data.map(normalize) : [];
-};
-
 export const getRelatedProducts = async (product, limit = 4) => {
   const { data } = await axios.get(`${API}/${product.id}/related`, { params: { limit } });
   return Array.isArray(data) ? data.map(normalize) : [];
