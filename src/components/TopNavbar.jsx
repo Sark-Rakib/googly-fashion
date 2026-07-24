@@ -14,7 +14,9 @@ const TopNavbar = () => {
             <span className="hidden lg:inline">{t("topNav.freeDelivery")}</span>
           </div>
 
-          <div className="hidden lg:block font-medium">{t("topNav.welcome")}</div>
+          <div className="hidden lg:block font-medium">
+            {t("topNav.welcome")}
+          </div>
 
           <div className="flex items-center">
             <Link
@@ -24,7 +26,10 @@ const TopNavbar = () => {
               {t("topNav.trackOrder")}
             </Link>
             <div className="hidden lg:flex items-center">
-              <a href="#" className="px-4 hover:text-gray-300 transition">
+              <a
+                href="/sell-on-googly"
+                className="px-4 hover:text-gray-300 transition"
+              >
                 {t("topNav.sellOn")}
               </a>
 

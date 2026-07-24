@@ -6,7 +6,7 @@ import {
   User,
   Package,
   ChevronDown,
-  Flame,
+  // Flame,
   Menu,
   X,
 } from "lucide-react";
@@ -148,8 +148,8 @@ const Navbar = () => {
                     to="/dashboard"
                     className="hidden sm:flex flex-col items-center group"
                   >
-                    <User className="w-5 h-5 text-white group-hover:text-[#1F3A63]" />
-                    <span className="text-[10px] text-white group-hover:text-[#1F3A63] mt-0.5">
+                    <User className="w-5 h-5 text-white group-hover:text-gray-300" />
+                    <span className="text-[10px] text-white group-hover:text-gray-300 mt-0.5">
                       {user.name.split(" ")[0]}
                     </span>
                   </Link>
@@ -285,20 +285,20 @@ const Navbar = () => {
               >
                 {t("nav.accessories")}
               </Link>
-               <Link
+              <Link
                 to="/new-arrivals"
                 className="px-4 py-2.5 text-xs font-medium text-white/90 hover:text-white hover:bg-white/10 transition-all duration-200 border-l border-white/10"
               >
                 {t("nav.newArrivals")}
               </Link>
             </div>
-            <Link
+            {/* <Link
               to="/shop?category=deals"
               className="flex items-center bg-red-500 p-1 rounded text-white"
             >
               <Flame className="w-4 h-4" />
               {t("nav.deals")}
-            </Link>
+            </Link> */}
           </div>
         </div>
 
@@ -368,7 +368,7 @@ const Navbar = () => {
               >
                 {t("nav.accessories")}
               </Link>
-               <Link
+              <Link
                 to="/new-arrivals"
                 className="block px-3 py-2 text-sm text-gray-700 hover:text-[#1F3A63] hover:bg-gray-50 rounded"
                 onClick={() => setMobileMenu(false)}

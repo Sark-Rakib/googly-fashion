@@ -5,7 +5,9 @@ import HomeProductCard from "./HomeProductCard";
 
 const FeaturedProducts = ({ products = [] }) => {
   const { t } = useTranslation();
-  const displayProducts = products.slice(0, 8).reverse();
+  const displayProducts = products.filter((p) => p.featured).slice(0, 8);
+
+  if (displayProducts.length === 0) return null;
 
   return (
     <section className="py-12 lg:py-16 bg-white">
