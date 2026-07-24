@@ -37,7 +37,13 @@ export const CartProvider = ({ children }) => {
       const { data } = await axios.get(`${API}/cart`, {
         headers: { Authorization: `Bearer ${token}` },
       });
-      if (data.length > 0) saveLocal(data);
+      if (data.length > 0) {
+        const normalized = data.map((item) => ({
+          ...item,
+          id: item._id || item.id,
+        }));
+        saveLocal(normalized);
+      }
     } catch {
       // keep local cart
     }
@@ -60,7 +66,7 @@ export const CartProvider = ({ children }) => {
           },
           { headers: { Authorization: `Bearer ${token}` } }
         );
-        saveLocal(data);
+        saveLocal(data.map((item) => ({ ...item, id: item._id || item.id })));
         return;
       } catch {
         // fall through to local
@@ -102,7 +108,7 @@ export const CartProvider = ({ children }) => {
           { quantity },
           { headers: { Authorization: `Bearer ${token}` } }
         );
-        saveLocal(data);
+        saveLocal(data.map((item) => ({ ...item, id: item._id || item.id })));
         return;
       } catch {
         // fall through
@@ -120,7 +126,7 @@ export const CartProvider = ({ children }) => {
         const { data } = await axios.delete(`${API}/cart/${id}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
-        saveLocal(data);
+        saveLocal(data.map((item) => ({ ...item, id: item._id || item.id })));
         return;
       } catch {
         // fall through
