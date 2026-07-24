@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
 import { CartProvider } from "./context/CartContext";
 import { LanguageProvider } from "./context/LanguageContext";
+import { ToastProvider } from "./context/ToastContext";
 import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import Shop from "./pages/Shop";
@@ -64,7 +65,8 @@ const Root = () => {
       <LanguageProvider>
         <AuthProvider>
           <CartProvider>
-            <ScrollToTop> </ScrollToTop>
+            <ToastProvider>
+              <ScrollToTop> </ScrollToTop>
             <Routes>
               <Route element={<Layout />}>
                 <Route path="/" element={<Home />} />
@@ -123,6 +125,7 @@ const Root = () => {
                 <Route path="profile" element={<DashboardProfile />} />
               </Route>
             </Routes>
+            </ToastProvider>
           </CartProvider>
         </AuthProvider>
       </LanguageProvider>

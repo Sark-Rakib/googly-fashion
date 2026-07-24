@@ -2,10 +2,12 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useAuth } from "../context/AuthContext";
+import { useToast } from "../context/ToastContext";
 import { Trash2, Star, Pencil } from "lucide-react";
 
 const ProductsList = () => {
   const { token, API } = useAuth();
+  const { toast, confirm } = useToast();
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -25,14 +27,15 @@ const ProductsList = () => {
   };
 
   const handleDelete = async (id) => {
-    if (!confirm("Delete this product?")) return;
+    const ok = await confirm("Delete this product?");
+    if (!ok) return;
     try {
       await axios.delete(`${API}/products/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setProducts((prev) => prev.filter((p) => p.id !== id && p._id !== id));
     } catch (err) {
-      alert(err.response?.data?.error || "Failed to delete");
+      toast.error(err.response?.data?.error || "Failed to delete");
     }
   };
 

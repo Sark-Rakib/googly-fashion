@@ -6,7 +6,7 @@ const JWT_SECRET = process.env.JWT_SECRET || "googly-fashion-jwt-secret";
 const JWT_EXPIRES = "7d";
 
 const signToken = (user) =>
-  jwt.sign({ id: user._id, email: user.email, role: user.role }, JWT_SECRET, {
+  jwt.sign({ id: user._id, name: user.name, email: user.email, role: user.role }, JWT_SECRET, {
     expiresIn: JWT_EXPIRES,
   });
 

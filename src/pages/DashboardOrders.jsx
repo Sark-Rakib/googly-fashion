@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useAuth } from "../context/AuthContext";
+import { useToast } from "../context/ToastContext";
 import { Package, ChevronDown, ChevronUp, Loader2 } from "lucide-react";
 
 const STATUSES = [
@@ -16,6 +17,7 @@ const PAYMENT_STATUSES = ["Pending", "Paid", "Unpaid"];
 
 const DashboardOrders = () => {
   const { user, token, API } = useAuth();
+  const { toast } = useToast();
   const isAdmin = user?.role === "admin";
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -50,7 +52,7 @@ const DashboardOrders = () => {
         prev.map((o) => (o.orderId === orderId ? { ...o, orderStatus: data.orderStatus } : o))
       );
     } catch (err) {
-      alert(err.response?.data?.error || "Failed to update status");
+      toast.error(err.response?.data?.error || "Failed to update status");
     }
   };
 
@@ -65,7 +67,7 @@ const DashboardOrders = () => {
         prev.map((o) => (o.orderId === orderId ? { ...o, paymentStatus: data.paymentStatus } : o))
       );
     } catch (err) {
-      alert(err.response?.data?.error || "Failed to update payment status");
+      toast.error(err.response?.data?.error || "Failed to update payment status");
     }
   };
 

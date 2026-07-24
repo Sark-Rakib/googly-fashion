@@ -4,12 +4,14 @@ import axios from "axios";
 import { useCart } from "../context/CartContext";
 import { useAuth } from "../context/AuthContext";
 import { useTranslation } from "../context/LanguageContext";
+import { useToast } from "../context/ToastContext";
 import { DELIVERY_CHARGE, paymentMethods } from "../services/config";
 
 const Checkout = () => {
   const { cart, fetchCart, clearCart } = useCart();
   const { user, API } = useAuth();
   const { t } = useTranslation();
+  const { toast } = useToast();
   const navigate = useNavigate();
   const location = useLocation();
   const directItem = location.state?.directItem;
@@ -47,7 +49,7 @@ const Checkout = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!form.fullName || !form.phone || !form.address) {
-      alert("Please fill in all required fields");
+      toast.error("Please fill in all required fields");
       return;
     }
     setPlacing(true);

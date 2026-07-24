@@ -1,11 +1,13 @@
 import { useTranslation } from "../context/LanguageContext";
+import { useToast } from "../context/ToastContext";
 
 const Contact = () => {
   const { t } = useTranslation();
+  const { toast } = useToast();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert(t("contact.thankYouMessage"));
+    toast.success(t("contact.thankYouMessage"));
   };
 
   return (

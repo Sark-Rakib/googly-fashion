@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useAuth } from "../context/AuthContext";
+import { useToast } from "../context/ToastContext";
 import { Users, Shield, Trash2, Loader2 } from "lucide-react";
 
 const AdminUsers = () => {
   const { token, API, user: currentUser } = useAuth();
+  const { toast, confirm } = useToast();
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -27,7 +29,8 @@ const AdminUsers = () => {
 
   const toggleRole = async (userId, currentRole) => {
     const newRole = currentRole === "admin" ? "customer" : "admin";
-    if (!confirm(`Change this user's role to "${newRole}"?`)) return;
+    const ok = await confirm(`Change this user's role to "${newRole}"?`);
+    if (!ok) return;
     try {
       const { data } = await axios.put(
         `${API}/auth/users/${userId}/role`,
@@ -38,23 +41,24 @@ const AdminUsers = () => {
         prev.map((u) => (u._id === userId ? { ...u, role: data.role } : u))
       );
     } catch (err) {
-      alert(err.response?.data?.error || "Failed to update role");
+      toast.error(err.response?.data?.error || "Failed to update role");
     }
   };
 
   const handleDelete = async (userId) => {
     if (userId === currentUser?.id) {
-      alert("You cannot delete your own account");
+      toast.error("You cannot delete your own account");
       return;
     }
-    if (!confirm("Delete this user? This cannot be undone.")) return;
+    const ok = await confirm("Delete this user? This cannot be undone.");
+    if (!ok) return;
     try {
       await axios.delete(`${API}/auth/users/${userId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setUsers((prev) => prev.filter((u) => u._id !== userId));
     } catch (err) {
-      alert(err.response?.data?.error || "Failed to delete user");
+      toast.error(err.response?.data?.error || "Failed to delete user");
     }
   };
 
