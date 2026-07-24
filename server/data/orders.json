@@ -1,0 +1,170 @@
+[
+  {
+    "orderId": "GOOGLY-1001",
+    "customerName": "Rakib Hasan",
+    "email": "rakib@example.com",
+    "phone": "01712345678",
+    "orderDate": "2026-06-10",
+    "paymentMethod": "cod",
+    "paymentStatus": "Pending",
+    "orderStatus": "Processing",
+    "address": "123 Gulshan Avenue, Dhaka 1212, Bangladesh",
+    "subtotal": 89.97,
+    "deliveryCharge": 60,
+    "total": 149.97,
+    "products": [
+      {
+        "name": "Classic White Cotton T-Shirt",
+        "image": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=200",
+        "price": 29.99,
+        "quantity": 2,
+        "size": "L",
+        "color": "White"
+      },
+      {
+        "name": "Slim Fit Black Jeans",
+        "image": "https://images.unsplash.com/photo-1542272454315-4c01d7abdf4a?w=200",
+        "price": 59.99,
+        "quantity": 1,
+        "size": "32",
+        "color": "Black"
+      }
+    ]
+  },
+  {
+    "orderId": "GOOGLY-1002",
+    "customerName": "Sarah Rahman",
+    "email": "sarah@example.com",
+    "phone": "01798765432",
+    "orderDate": "2026-06-12",
+    "paymentMethod": "bkash",
+    "paymentStatus": "Paid",
+    "orderStatus": "Shipped",
+    "address": "456 Banani Road, Dhaka 1213, Bangladesh",
+    "subtotal": 79.99,
+    "deliveryCharge": 0,
+    "total": 79.99,
+    "products": [
+      {
+        "name": "Elegant Summer Dress",
+        "image": "https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=200",
+        "price": 79.99,
+        "quantity": 1,
+        "size": "M",
+        "color": "Blue"
+      }
+    ]
+  },
+  {
+    "orderId": "GOOGLY-1003",
+    "customerName": "Imran Khan",
+    "email": "imran@example.com",
+    "phone": "01811223344",
+    "orderDate": "2026-06-08",
+    "paymentMethod": "nagad",
+    "paymentStatus": "Paid",
+    "orderStatus": "Delivered",
+    "address": "789 Uttara Sector 10, Dhaka 1230, Bangladesh",
+    "subtotal": 149.97,
+    "deliveryCharge": 60,
+    "total": 209.97,
+    "products": [
+      {
+        "name": "Leather Casual Shoes",
+        "image": "https://images.unsplash.com/photo-1549298916-b41d501d3772?w=200",
+        "price": 89.99,
+        "quantity": 1,
+        "size": "42",
+        "color": "Brown"
+      },
+      {
+        "name": "Leather Belt",
+        "image": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=200",
+        "price": 29.99,
+        "quantity": 2,
+        "size": "M",
+        "color": "Black"
+      }
+    ]
+  },
+  {
+    "orderId": "GOOGLY-1004",
+    "customerName": "Nusrat Jahan",
+    "email": "nusrat@example.com",
+    "phone": "01955667788",
+    "orderDate": "2026-06-14",
+    "paymentMethod": "bank",
+    "paymentStatus": "Pending",
+    "orderStatus": "Confirmed",
+    "address": "321 Dhanmondi 27, Dhaka 1209, Bangladesh",
+    "subtotal": 39.99,
+    "deliveryCharge": 60,
+    "total": 99.99,
+    "products": [
+      {
+        "name": "Designer Handbag",
+        "image": "https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=200",
+        "price": 39.99,
+        "quantity": 1,
+        "size": "One Size",
+        "color": "Red"
+      }
+    ]
+  },
+  {
+    "orderId": "GOOGLY-1005",
+    "customerName": "Fahim Ahmed",
+    "email": "fahim@example.com",
+    "phone": "01665544332",
+    "orderDate": "2026-06-15",
+    "paymentMethod": "cod",
+    "paymentStatus": "Unpaid",
+    "orderStatus": "Out for Delivery",
+    "address": "567 Mirpur Road, Dhaka 1216, Bangladesh",
+    "subtotal": 119.98,
+    "deliveryCharge": 0,
+    "total": 119.98,
+    "products": [
+      {
+        "name": "Sports Running Shoes",
+        "image": "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=200",
+        "price": 119.98,
+        "quantity": 1,
+        "size": "43",
+        "color": "Blue"
+      }
+    ]
+  },
+  {
+    "orderId": "GOOGLY-1006",
+    "customerName": "Tanvir Arafat",
+    "email": "tanvir@example.com",
+    "phone": "01711122333",
+    "orderDate": "2026-06-16",
+    "paymentMethod": "bkash",
+    "paymentStatus": "Paid",
+    "orderStatus": "Order Placed",
+    "address": "890 Mirpur DOHS, Dhaka 1216, Bangladesh",
+    "subtotal": 199.99,
+    "deliveryCharge": 0,
+    "total": 199.99,
+    "products": [
+      {
+        "name": "Premium Wool Blazer",
+        "image": "https://images.unsplash.com/photo-1593030761757-71fae45fa0e7?w=200",
+        "price": 149.99,
+        "quantity": 1,
+        "size": "L",
+        "color": "Navy"
+      },
+      {
+        "name": "Formal Shirt",
+        "image": "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=200",
+        "price": 49.99,
+        "quantity": 1,
+        "size": "L",
+        "color": "White"
+      }
+    ]
+  }
+]
